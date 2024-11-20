@@ -113,9 +113,9 @@ namespace Sthom\App\Model;
 
 class User
 {
-    private int ?$id;
-    private string $username;
-    private string $password;
+    private ?int $id = null;
+    private ?string $username = null;
+    private ?string $password = null;
     
     // Getters et setters à implémenter
     // /!\ Attention, on ne doit pas implémenter le setter pour l'id car il est généré automatiquement par la base de données
