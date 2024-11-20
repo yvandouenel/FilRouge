@@ -1,26 +1,15 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
+use Sthom\Kernel\Kernel;
 
-use Dotenv\Dotenv;
-use Sthom\FilRouge\Kernel;
-
-$env = Dotenv::createImmutable(__DIR__ . '/..');
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY), $parameters);
-$routes = [
-    [
-        'method' => 'GET',
-        'path' => '/',
-        'handler' => 'HomeController@getHome'
-    ],
-    [
-        'method' => 'GET',
-        'path' => '/datas',
-        'handler' => 'HomeController@getDatas'
-    ]
-];
-
-$kernel = Kernel::setup($env->load(), $routes);
-$kernel->boot($path, $parameters);
+try {
+    new Kernel();
+} catch (Exception $e) {
+    if ($_ENV['DEBUG'] === 'false') {
+        echo "<h1>Une erreur est survenue</h1>";
+        exit();
+    }
+    dd($e->getMessage());
+}
 
 

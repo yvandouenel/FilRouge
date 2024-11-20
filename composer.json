@@ -5,7 +5,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Sthom\\FilRouge\\": "src/"
+            "Sthom\\App\\": "src/",
+            "Sthom\\Kernel\\": "kernel/"
         }
     },
     "authors": [
@@ -19,6 +20,7 @@
         "symfony/var-dumper": "^6.4"
     },
     "require": {
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "ext-pdo": "*"
     }
 }
