@@ -1,8 +1,9 @@
 <?php
 
-namespace Sthom\Kernel;
+namespace Sthom\Kernel\Utilities;
 
-use Sthom\Kernel\DbContext;
+use Sthom\Kernel\Database\Database;
+use Sthom\Kernel\Database\SqlBuilder;
 
 /**
  * Cette classe est un repository générique
@@ -28,7 +29,7 @@ class Repository
     {
         $this->table = $this->setTable($namespace);
         $this->model = $namespace;
-        $this->connexion = DbContext::getConnexion();
+        $this->connexion = Database::getConnexion();
     }
 
 

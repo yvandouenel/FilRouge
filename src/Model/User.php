@@ -4,6 +4,7 @@ namespace Sthom\App\Model;
 
 class User
 {
+    const TABLE = 'users';
 
     private ?int $id;
     private ?string $name;

@@ -2,6 +2,8 @@
 
 namespace Sthom\Kernel;
 
+use Sthom\Kernel\Utilities\Repository;
+
 class Security
 {
 
@@ -10,7 +12,7 @@ class Security
      * ELle retourne true si une clé 'connected' est présente dans la session et qu'elle est à true
      * Sinon, elle retourne false
      */
-    public final function isConnected():bool
+    public static final function isConnected():bool
     {
         if (isset($_SESSION['connected']) && $_SESSION['connected']===true) {
             return true;
@@ -23,7 +25,7 @@ class Security
      * Cette méthode permet de déconnecter l'utilisateur
      * Elle met à false la clé 'connected' de la session
      */
-    public final function disconnect():void
+    public static final function disconnect():void
     {
         $_SESSION['connected'] = false;
     }
@@ -41,7 +43,7 @@ class Security
      * @return mixed
      * @throws \Exception
      */
-    public final function connect(string $username, string $password):mixed
+    public static final function connect(string $username, string $password): mixed
     {
         $repository = new Repository('user');
         $result = $repository->getByAttributes(['username' => $username], false);
@@ -55,4 +57,5 @@ class Security
             throw new \Exception('Identifiant ou mot de passe invalide');
         }
     }
+
 }

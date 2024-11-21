@@ -5,7 +5,7 @@ class Router
 {
 
 
-    public function __construct(private readonly array $routes){}
+    public function __construct(){}
 
 
     /**
@@ -17,25 +17,28 @@ class Router
      * @return string
      * @throws \Exception
      */
-    public final function dispatch(string $method, string $uri, array $queryParameters): void
+    public final static function dispatch(): void
     {
+        include './../config/routes.php';
+        $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY), $parameters);
         $isRouteFound = false;
-        foreach ($this->routes as $route) {
+        foreach (ROUTES as $route) {
             if ($route['method'] !== $_SERVER['REQUEST_METHOD']) {
                 throw new \Exception('Method not allowed');
             }
-            if ($route['path'] === $uri) {
+            if ($route['path'] === $currentPath) {
                 $class = explode('@', $route['handler'])[0];
                 $namespace = $_ENV['CONTROLLER_NAMESPACE'];
                 $controller = $namespace . $class;
                 $method = explode('@', $route['handler'])[1];
                 $controllerInstance = new $controller();
-                $controllerInstance->$method(...array_values($queryParameters));
+                $controllerInstance->$method(...array_values($parameters));
                 $isRouteFound = true;
             }
         }
         if (!$isRouteFound) {
-            throw new \Exception('Route not found');
+            throw new \Exception('No route found');
         }
     }
 }

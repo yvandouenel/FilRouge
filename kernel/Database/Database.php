@@ -1,6 +1,6 @@
 <?php
 
-namespace Sthom\Kernel;
+namespace Sthom\Kernel\Database;
 use PDO;
 
 
@@ -9,7 +9,7 @@ use PDO;
  * Elle utilise le pattern Singleton pour n'instancier qu'une seule connexion à la base de données
  * Elle utilise l'objet PDO de PHP pour se connecter et pour exécuter des requêtes SQL
  */
-class DbContext {
+class Database {
 
     /**
      * @var PDO|null

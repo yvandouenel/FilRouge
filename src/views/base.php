@@ -7,6 +7,10 @@
     <title><?php echo $title?></title>
 </head>
 <body>
+    <?php include_once './partials/_header.php'; ?>
+
     <?php include_once $view; ?>
+
+    <?php include_once './partials/_footer.php'; ?>
 </body>
 </html>

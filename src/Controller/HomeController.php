@@ -3,8 +3,8 @@
 namespace Sthom\App\Controller;
 
 use Sthom\App\Model\User;
-use Sthom\Kernel\AbstractController;
-use Sthom\Kernel\Repository;
+use Sthom\Kernel\Utilities\AbstractController;
+use Sthom\Kernel\Utilities\Repository;
 
 class HomeController extends AbstractController
 {

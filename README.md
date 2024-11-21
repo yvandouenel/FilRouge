@@ -50,7 +50,7 @@ classe `AbstractController`.
 
 namespace Sthom\App\Controller;
 
-use Sthom\Kernel\AbstractController;
+use Sthom\Kernel\Utilities\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -138,8 +138,7 @@ On lui passera en paramètre le nom complet de la classe du modèle.
 
 namespace Sthom\App\Controller;
 
-use Sthom\Kernel\AbstractController;
-use Sthom\App\Model\User;
+use Sthom\App\Model\User;use Sthom\Kernel\Utilities\AbstractController;
 
 class HomeController extends AbstractController
 {

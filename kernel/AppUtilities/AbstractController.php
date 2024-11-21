@@ -1,6 +1,6 @@
 <?php
 
-namespace Sthom\Kernel;
+namespace Sthom\Kernel\Utilities;
 
 
 /**
@@ -47,8 +47,8 @@ class AbstractController
         try {
             http_response_code($status); // Définit le code de statut HTTP
             header('Content-Type: text/html'); // Définit le type de réponse à HTML
-            $data['view'] = './../views/' . $path . '.php'; // Définit le chemin du fichier PHP
             extract($data); // Extrait les données du tableau associatif, et rend chaque clé disponible en tant que variable dans le fichier PHP
+            $view = './../views/' . $path . '.php'; // Définit le chemin du fichier PHP
             include "./../views/base.php"; // Inclut le fichier PHP
             die(); // Arrête l'exécution du script
         } catch (\Exception $e) {

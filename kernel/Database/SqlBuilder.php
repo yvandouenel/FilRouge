@@ -1,6 +1,6 @@
 <?php
 
-namespace Sthom\Kernel;
+namespace Sthom\Kernel\Database;
 
 class SqlBuilder
 {
