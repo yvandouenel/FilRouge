@@ -2,72 +2,31 @@
 
 namespace Sthom\Kernel;
 
-
-use Dotenv\Dotenv;
-
+/**
+ * Class Kernel
+ *
+ * Cette classe représente le noyau de l'application
+ * C'est elle qui appelle les différentes classes pour construire l'application
+ *
+ * Elle contient une méthode statique boot qui utilise la méthode statique loadConfiguration de la classe Configuration
+ * pour charger les variables d'environnement du fichier .env vers la superglobale $_ENV
+ * Elle utilise ensuite la méthode statique dispatch de la classe Router pour dispatcher la requête HTTP du client vers le contrôleur correspondant
+ * qui lui affichera une vue ou renverra une réponse JSON
+ *
+ * @package Sthom\Kernel
+ */
 class Kernel
 {
-
-
     /**
-     * Le constructeur de la classe Kernel
-     * Il permet de charger la configuration de l'application
-     * de démarrer la session et de charger les routes de l'application
-     */
-    public function __construct()
-    {
-        $this->loadConfiguration();
-        $this->startSession();
-        $this->loadRouting();
-    }
-
-
-    /**
-     * Cette méthode permet de charger les routes de l'application
-     * Elle inclut le fichier de configuration des routes
-     * Elle instancie un routeur et lui demande de dispatcher la requête
+     * Cette méthode permet de d'appeler tous les parties nécessaires pour le bon fonctionnement de l'application
      *
      * @return void
-     *
+     * @throws \Exception
      */
-    private function loadRouting(): void
+    public static function boot(): void
     {
-        include './../config/routes.php';
-        $router = new Router(ROUTES);
-        $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY), $parameters);
-        $router->dispatch($_SERVER['REQUEST_METHOD'], $currentPath, $parameters);
+        Configuration::loadConfiguration(); // Charge les variables d'environnement du fichier .env
+        Router::dispatch(); // redirige la requête HTTP du client vers le contrôleur correspondant
     }
 
-
-    /**
-     * Cette méthode permet de charger la configuration de l'application
-     * Elle utilise la bibliothèque Dotenv pour charger les variables d'environnement
-     *
-     * @return void
-     *
-     */
-    private function loadConfiguration(): void
-    {
-        $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
-        $dotenv->load();
-    }
-
-
-    /**
-     * Cette méthode permet de démarrer la session
-     * Si la session n'est pas démarrée, elle la démarre
-     * Sinon, elle régénère l'identifiant de session
-     *
-     * @return void
-     *
-     */
-    private function startSession(): void
-    {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        } else {
-            session_regenerate_id();
-        }
-    }
 }

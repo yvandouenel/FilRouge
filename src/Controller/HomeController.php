@@ -3,21 +3,18 @@
 namespace Sthom\App\Controller;
 
 use Sthom\App\Model\User;
-use Sthom\Kernel\AbstractController;
-use Sthom\Kernel\Repository;
+use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Utils\Repository;
 
 class HomeController extends AbstractController
 {
-    public function index(): void
+    public final function index(): void
     {
-        $repoUser = new Repository(User::class);
-        $repoUser->delete(1);
-
-        $this->render('home/index', ['title' => 'Home']);
+        $userRepo = new Repository(User::class);
+        $user = $userRepo->customQuery('SELECT * FROM user WHERE id = :id', ['id' => 2]);
+        dd($user);
+        $this->render('home/index.php');
     }
 
-    public function home(string $name, int $id): void
-    {
-        $this->render('home/index', ['title' => 'Page d\'accueil']);
-    }
+
 }

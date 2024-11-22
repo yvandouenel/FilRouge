@@ -4,13 +4,14 @@ namespace Sthom\App\Model;
 
 class User
 {
+    const TABLE = 'user';
 
     private ?int $id;
     private ?string $name;
     private ?string $email;
     private ?string $password;
 
-    private ?string $created_at;
+    private ?\DateTimeImmutable $created_at;
 
     public function getId(): int
     {
