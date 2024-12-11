@@ -274,7 +274,7 @@ Lier ce repository avec le repository originel (celui de Seb)
 git remote add upstream https://github.com/SebastienThomasDEV/FilRouge
 
 ### Récupérer les dernières modifications du dépôt original
-#### Si "Sync fork" a été mis en place, il suffit de faire un git pull depuis main
+#### Si "Sync fork" a été mis en place, vous pouvez demander via l'interface de github à faire la synchronisation et ensuite il suffit de faire un git pull depuis main
 #### Si "Sync fork" n'a pas été mis en place
 ##### 1.git fetch upstream
 
