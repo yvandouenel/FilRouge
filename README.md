@@ -255,11 +255,15 @@ Chaque groupe pourra ensuite créer ses branches dans son fork, par exemple : fe
 S'ils souhaitent proposer des modifications,  les groupes  pourront faire une Pull Request vers le dépôt de Sébastien
 
 ### Pour créer un fork :
+Attention, seuls les "responsables" git de chaque groupe ont besoin de faire un fork.
+
 Se rendre sur le repository de Sébastien
 https://github.com/SebastienThomasDEV/FilRouge
  et cliquer sur créer un fork (Fork > create a new fork)
 Cela va créer un repository sur votre propre github avec le même nom ex :
 https://github.com/VotreNom/FilRouge
+
+### Cloner localement le fork
 
 Créer dans votre arborescence un clone :
 Git clone https://github.com/VotreNom/FilRouge.git
