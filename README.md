@@ -263,6 +263,8 @@ https://github.com/SebastienThomasDEV/FilRouge
 Cela va créer un repository sur votre propre github avec le même nom ex :
 https://github.com/VotreNom/FilRouge
 
+Attention, si vous avez bien cliqué sur "Sync fork", le repository sera automatiquement mis à jour
+
 ### Cloner localement le fork
 
 Créer dans votre arborescence un clone :
@@ -272,14 +274,16 @@ Lier ce repository avec le repository originel (celui de Seb)
 git remote add upstream https://github.com/SebastienThomasDEV/FilRouge
 
 ### Récupérer les dernières modifications du dépôt original
-#### 1.git fetch upstream
+#### Si "Sync fork" a été mis en place, il suffit de faire un git pull depuis main
+#### Si "Sync fork" n'a pas été mis en place
+##### 1.git fetch upstream
 
-#### 2. Se placer sur la branche main locale
+##### 2. Se placer sur la branche main locale
 git checkout main
 
-#### 3. Fusionner les modifications de upstream/main dans la branche main locale git merge upstream/main
+##### 3. Fusionner les modifications de upstream/main dans la branche main locale git merge upstream/main
 
-#### 4. Pousser ces modifications vers leur fork sur GitHub
+##### 4. Pousser ces modifications vers leur fork sur GitHub
 git push origin main
 
 
