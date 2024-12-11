@@ -255,6 +255,7 @@ Chaque groupe pourra ensuite créer ses branches dans son fork, par exemple : fe
 S'ils souhaitent proposer des modifications,  les groupes  pourront faire une Pull Request vers le dépôt de Sébastien
 
 ### Pour créer un fork :
+Attention, l'étape du fork peut (ou doit) être accomplie une seule fois par groupe.
 Se rendre sur le repository de Sébastien
 https://github.com/SebastienThomasDEV/FilRouge
  et cliquer sur créer un fork (Fork > create a new fork)
