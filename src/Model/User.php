@@ -2,14 +2,17 @@
 
 namespace Sthom\App\Model;
 
-class User
+use Sthom\Kernel\Utils\UserInterface;
+
+class User implements UserInterface
 {
-    const TABLE = 'user';
 
     private ?int $id;
     private ?string $name;
     private ?string $email;
     private ?string $password;
+
+    private ?array $roles;
 
     private ?\DateTimeImmutable $created_at;
 
@@ -58,6 +61,23 @@ class User
     {
         $this->created_at = $created_at;
     }
+
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
+    }
+
+    public function addRole(string $role): void
+    {
+        $this->roles[] = $role;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+
+
 
 
 

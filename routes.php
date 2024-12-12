@@ -4,10 +4,12 @@ const ROUTES = [
         "CONTROLLER" => "HomeController",
         "METHOD" => "index",
         "HTTP_METHODS" => "GET",
+        'AUTH' => ['ROLE_USER', 'ROLE_ADMIN']
     ],
-    "/home" => [
+    "/create" => [
         "CONTROLLER" => "HomeController",
-        "METHOD" => "home",
-        "HTTP_METHODS" => "GET",
+        "METHOD" => "create",
+        "HTTP_METHODS" => "POST",
+        'AUTH' => ['ROLE_USER', 'ROLE_ADMIN']
     ],
 ];
