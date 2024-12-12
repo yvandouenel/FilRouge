@@ -9,5 +9,4 @@ interface UserInterface
 
     public function getPassword(): string;
     public function setPassword(string $password): void;
-
 }

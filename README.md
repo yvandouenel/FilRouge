@@ -291,3 +291,7 @@ git push origin main
 - Ajouter une gestion du type tableaux (recupération & insertion) exclusivement pour la colonne roles de  l'entité User (voir les classes User, Security et Repository)
 ! tu peut utiliser la fonction serialize de php pour convertir un tableau en chaine de caractère et unserialize vice versa
 ! ou tu peut utiliser la fonction json_encode de php pour convertir un tableau en chaine de caractère et json_decode 
+
+Ok, j'ai utilisé les serialize et unserialize dans User.php
+L'ajout d'un utilisateur fonctionne via la route /register  mais j'ai l'impression que rien n'est stocké dans la session
+Tu trouveras le fichier fil_rouge.sql qui donne l'état de ma bdd

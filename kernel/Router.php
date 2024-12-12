@@ -87,11 +87,15 @@ class Router
                     default:
                         throw new \Exception('Invalid HTTP_METHODS type'); // Erreur si le type est invalide
                 }
-                if  (isset($route['AUTH'])) {
+
+                if (isset($route['AUTH'])) {
+                    // Vérifier si l'utilisateur n'est PAS connecté
                     if (!Security::isConnected()) {
-                        throw new \Exception('Unauthorized'); // Erreur si la méthode est invalide
-                    } elseif (is_array($route['AUTH']) && !Security::hasRole($route['AUTH'])) {
-                        throw new \Exception('Forbidden'); // Erreur si la méthode est invalide
+                        throw new \Exception('Unauthorized'); // L'utilisateur doit être connecté
+                    }
+                    // Si AUTH est un tableau, vérifier les rôles
+                    elseif (is_array($route['AUTH']) && !Security::hasRole($route['AUTH'])) {
+                        throw new \Exception('Forbidden'); // L'utilisateur n'a pas les rôles requis
                     }
                 }
                 $controller = $_ENV['CONTROLLER_NAMESPACE'] . $route['CONTROLLER'];

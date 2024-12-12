@@ -6,15 +6,14 @@ use Sthom\Kernel\Utils\UserInterface;
 
 class User implements UserInterface
 {
-
+    const TABLE = "user";
     private ?int $id;
     private ?string $name;
     private ?string $email;
     private ?string $password;
 
-    private ?array $roles;
+    private ?string $roles;
 
-    private ?\DateTimeImmutable $created_at;
 
     public function getId(): int
     {
@@ -64,21 +63,22 @@ class User implements UserInterface
 
     public function setRoles(array $roles): void
     {
-        $this->roles = $roles;
+        // on récupère le tableau et on le sérialise avant insertion dans la base de données
+        $serializedRoles = serialize($roles);
+        $this->roles = $serializedRoles;
     }
 
     public function addRole(string $role): void
     {
-        $this->roles[] = $role;
+        // on déserialise la chaîne de caractères
+        $roles = unserialize($this->roles);
+        $roles[] = $role;
+        $serializedRoles = serialize($roles);
+        $this->roles = $serializedRoles;
     }
 
     public function getRoles(): array
     {
-        return $this->roles;
+        return unserialize($this->roles);
     }
-
-
-
-
-
 }

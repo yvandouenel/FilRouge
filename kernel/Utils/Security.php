@@ -93,15 +93,16 @@ class Security
          * - `$column` peut être `username`, `email`, ou tout autre champ unique d'authentification.
          */
 
-        if (class_exists($_ENV['MODEL_NAMESPACE'] . 'User') && class_implements(UserInterface::class)) {
+        if (class_exists($_ENV['MODEL_NAMESPACE'] . 'User') && (in_array(UserInterface::class, class_implements($_ENV['MODEL_NAMESPACE'] . 'User')))) {
             $model = $_ENV['MODEL_NAMESPACE'] . 'User';
             $repository = new Repository($model);
             $result = $repository->getByAttributes([$identifier => $username]);
-            if ($result) {
-                if (password_verify($password, $result->getPassword())) {
-                    $_SESSION['USER'] = $result;
+
+            if ($result && !empty($result)) {
+                $user = $result[0]; // Récupérer le premier et seul utilisateur
+                if (password_verify($password, $user->getPassword())) {
+                    $_SESSION['USER'] = $user;
                 } else {
-                    // Si le mot de passe est incorrect, lever une exception.
                     throw new \Exception('Mot de passe incorrect');
                 }
             } else {
@@ -111,14 +112,13 @@ class Security
         } else {
             throw new \Exception("Le modèle d'utilisateur n'existe pas ou n'implémente pas l'interface UserInterface");
         }
-
-
     }
 
     public static function hasRole(array $roles): bool
     {
         if (isset($_SESSION['USER']) && $_SESSION['USER'] instanceof UserInterface) {
             $userRoles = $_SESSION['USER']->getRoles();
+
             foreach ($roles as $role) {
                 if (in_array($role, $userRoles)) {
                     return true;
