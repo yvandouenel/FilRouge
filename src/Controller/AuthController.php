@@ -15,9 +15,11 @@ class AuthController extends AbstractController
     if (Security::isConnected()) {
       $this->redirect("/");
     } else {
+
       if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["email"], $_POST["password"])) {
         try {
           Security::authenticate("email", $_POST["email"], $_POST["password"],);
+
           $this->redirect("/");
         } catch (\Exception $e) {
           $message = $e->getMessage();

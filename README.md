@@ -45,6 +45,9 @@ DEBUG=true
 
 ## **Utilisation**
 
+### Lancer le serveur PHP et webpack en même temps
+npm run serve
+
 ### **Lancer le serveur PHP**
 Pour démarrer un serveur PHP local, utilisez la commande suivante (à exécuter depuis la racine du projet) :
 ```bash
@@ -293,5 +296,5 @@ git push origin main
 ! ou tu peut utiliser la fonction json_encode de php pour convertir un tableau en chaine de caractère et json_decode 
 
 Ok, j'ai utilisé les serialize et unserialize dans User.php
-L'ajout d'un utilisateur fonctionne via la route /register  mais j'ai l'impression que rien n'est stocké dans la session
+L'ajout d'un utilisateur fonctionne via la route /register  mais il y a un bug quand on veut ensuite s'identifier (par exemple sur la page /test)
 Tu trouveras le fichier fil_rouge.sql qui donne l'état de ma bdd

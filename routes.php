@@ -4,7 +4,6 @@ const ROUTES = [
         "CONTROLLER" => "HomeController",
         "METHOD" => "index",
         "HTTP_METHODS" => "GET",
-        'AUTH' => ['ROLE_USER', 'ROLE_ADMIN']
     ],
     "/create" => [
         "CONTROLLER" => "HomeController",
@@ -15,7 +14,8 @@ const ROUTES = [
     "/test" => [
         "CONTROLLER" => "TestController",
         "METHOD" => "index",
-        "HTTP_METHODS" => "GET"
+        "HTTP_METHODS" => "GET",
+        'AUTH' => ['ROLE_USER', 'ROLE_ADMIN']
     ],
     "/login" => [
         "CONTROLLER" => "AuthController",
