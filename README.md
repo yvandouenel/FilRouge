@@ -263,7 +263,7 @@ https://github.com/SebastienThomasDEV/FilRouge
 Cela va créer un repository sur votre propre github avec le même nom ex :
 https://github.com/VotreNom/FilRouge
 
-Attention, si vous avez bien cliqué sur "Sync fork", le repository sera automatiquement mis à jour
+Attention, si vous avez bien cliqué sur "Sync fork", le repository ne sera pas automatiquement mis à jour
 
 ### Cloner localement le fork
 
