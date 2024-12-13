@@ -295,6 +295,7 @@ git push origin main
 ! tu peut utiliser la fonction serialize de php pour convertir un tableau en chaine de caractère et unserialize vice versa
 ! ou tu peut utiliser la fonction json_encode de php pour convertir un tableau en chaine de caractère et json_decode 
 
-Ok, j'ai utilisé les serialize et unserialize dans User.php
-L'ajout d'un utilisateur fonctionne via la route /register  mais il y a un bug quand on veut ensuite s'identifier (par exemple sur la page /test)
-Tu trouveras le fichier fil_rouge.sql qui donne l'état de ma bdd
+Mise en place de serialize et unserialize dans User.php
+L'ajout d'un utilisateur fonctionne via la route /register. Pour l'instant, je n'ai testé qu'avec les roles "ROLE_USER" et "ROLE_ADMIN"
+Ajout la route logout pour pouvoir faire des tests
+Ajout de la route roleuser et roleadmin pour pouvoir tester si le contrôle des rôles fonctionne bien

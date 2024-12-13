@@ -102,6 +102,7 @@ class Security
                 $user = $result[0]; // Récupérer le premier et seul utilisateur
                 if (password_verify($password, $user->getPassword())) {
                     $_SESSION['USER'] = $user;
+                    /* dd($_SESSION['USER']); */
                 } else {
                     throw new \Exception('Mot de passe incorrect');
                 }

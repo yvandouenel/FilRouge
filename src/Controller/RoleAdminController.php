@@ -4,10 +4,10 @@ namespace Sthom\App\Controller;
 
 use Sthom\Kernel\Utils\AbstractController;
 
-class TestController extends AbstractController
+class RoleAdminController extends AbstractController
 {
     public final function index(): void
     {
-        $this->render('test.php');
+        $this->render('roleAdmin.php');
     }
 }

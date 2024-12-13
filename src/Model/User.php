@@ -79,6 +79,10 @@ class User implements UserInterface
 
     public function getRoles(): array
     {
-        return unserialize($this->roles);
+        //return unserialize($this->roles);
+
+        $decoded = html_entity_decode($this->roles);
+        $roles = unserialize($decoded);
+        return $roles ?: ['ROLE_USER'];
     }
 }
