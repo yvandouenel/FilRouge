@@ -6,7 +6,7 @@ use Sthom\Kernel\Utils\UserInterface;
 
 class User implements UserInterface
 {
-    const TABLE = "user";
+    public const TABLE = "user";
     private ?int $id;
     private ?string $name;
     private ?string $email;
@@ -64,7 +64,7 @@ class User implements UserInterface
     public function setRoles(array $roles): void
     {
         // on récupère le tableau et on le sérialise avant insertion dans la base de données
-        $serializedRoles = serialize($roles);
+        $serializedRoles = json_encode($roles);
         $this->roles = $serializedRoles;
     }
 
@@ -79,10 +79,10 @@ class User implements UserInterface
 
     public function getRoles(): array
     {
-        //return unserialize($this->roles);
+        return unserialize($this->roles);
 
-        $decoded = html_entity_decode($this->roles);
-        $roles = unserialize($decoded);
-        return $roles ?: ['ROLE_USER'];
+        // $decoded = html_entity_decode($this->roles);
+        // $roles = unserialize($decoded);
+        // return $roles ?: ['ROLE_USER'];
     }
 }
